@@ -6,12 +6,20 @@ from selenium.webdriver.chrome.options import Options
 
 def tryPick(className, driver):
     try:
-        ele = driver.find_element_by_link_text(className)
-    except selenium.common.exceptions.NoSuchElementException as e:
-        print("Can't find class: " + className)
-        time.sleep(3)
-        ele = driver.find_element_by_link_text(className)
-    pare = ele.find_element_by_xpath(".//..//..")
+        ele = driver.find_element_by_xpath(
+            "//td[contains(.,'{0}')]".format(className))
+    except selenium.common.exceptions.NoSuchElementException:
+        try:
+            ele = driver.find_element_by_link_text(className)
+            ele = ele.find_element_by_xpath("./..")
+        except selenium.common.exceptions.NoSuchElementException:
+            print("Can't find class: " + className)
+            time.sleep(3)
+            return False
+
+        # ele = driver.find_element_by_xpath(
+            # "//td[contains(.,'{0}')]".format(className))
+    pare = ele.find_element_by_xpath(".//..")
 
     try:
         # pare.find_element_by_xpath("//span[contains(.,'已满')]")
@@ -48,15 +56,14 @@ print(driver.title)
 #     # ele.click()
 #     ele = driver.find_element_by_link_text("微电子材料")
 ii = 0
-zzllk = ["中国特色社会主义理论与实践研究2020202102MAST610019.14"]
-dywgy = ["英语研究论文写作2020202102MAST611111.02"]
+zzllk = []
+dywgy = []
 
-xwjck = ["离散数学与最优决策2020202102INFO620015.01",
-         "模拟集成电路和系统设计2020202102INFO620028.01"]
-xwzyk = ["低功耗集成电路设计方法学2020202102SME620002.01"]
+xwjck = []
+xwzyk = ["集成电路测试和可测试设计2020202102INFO630030.01"]
 # zyxxk=["射频微波通信电路设计基础","微电子系统封装","半导体测试技术"]
-zyxxk = ["数据转换系统设计2020202102INFO630072.01",
-         "数字通信系统集成电路设计2020202102INFO630151.01"]
+zyxxk = ["电源和功耗管理集成电路设计2020202102INFO630066.01", "计算微电子学2020202102INFO830033.01"]
+# zyxxk = ["计算微电子学2020202102INFO830033.01"]
 while True:
     if ii % 20 == 0:
         driver.refresh()
