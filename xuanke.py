@@ -42,7 +42,7 @@ chrome_options = Options()
 chrome_options.add_experimental_option("debuggerAddress", "localhost:9222")
 chrome_driver = "chrome_driver"
 
-driver = webdriver.Chrome(chrome_options=chrome_options)
+driver = webdriver.Chrome(options=chrome_options)
 print(driver.title)
 # ii=1
 # while(ii):
