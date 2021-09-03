@@ -2,6 +2,7 @@ import time
 from selenium import webdriver
 import selenium
 from selenium.webdriver.chrome.options import Options
+import subprocess
 
 
 def tryPick(className, driver):
@@ -37,12 +38,21 @@ def tryPick(className, driver):
     return True
 
 
+# Start chrome
+subprocess.run("google-chrome-stable --remote-debugging-port=9222 --user-data-dir=~/.config/google-chrome/ --disk-cache-dir=~/.cache/google-chrome/Default &", shell=True)
+
+# Connect to chrome
 chrome_options = Options()
 
 chrome_options.add_experimental_option("debuggerAddress", "localhost:9222")
 chrome_driver = "chrome_driver"
 
 driver = webdriver.Chrome(options=chrome_options)
+
+driver.get("http://yjsxk.fudan.edu.cn/wsxk/")
+while input("If you finished entering you accouter, please press enter!"):
+    pass
+
 print(driver.title)
 # ii=1
 # while(ii):
@@ -58,11 +68,12 @@ print(driver.title)
 ii = 0
 zzllk = []
 dywgy = []
+zywy = []
 
 xwjck = []
-xwzyk = ["集成电路测试和可测试设计2020202102INFO630030.01"]
+xwzyk = ["系统级可编程芯片设计2021202201INFO630047.01"]
 # zyxxk=["射频微波通信电路设计基础","微电子系统封装","半导体测试技术"]
-zyxxk = ["电源和功耗管理集成电路设计2020202102INFO630066.01", "计算微电子学2020202102INFO830033.01"]
+zyxxk = ["多物理场建模2021202201SME637001.01", "计算微电子学2020202102INFO830033.01"]
 # zyxxk = ["计算微电子学2020202102INFO830033.01"]
 while True:
     if ii % 20 == 0:
@@ -72,7 +83,7 @@ while True:
         time.sleep(3)
     try:
         # 学位公共课
-        if zzllk != [] or dywgy != []:
+        if zzllk != [] or dywgy != [] or zywy != []:
             ele = driver.find_element_by_link_text("学位公共课")
             ele.click()
             time.sleep(1)
@@ -87,6 +98,15 @@ while True:
                 for cls in dywgy:
                     if tryPick(cls, driver):
                         dywgy.remove(cls)
+
+            if zywy != []:
+                ele = driver.find_element_by_xpath("//li[contains(.,'专业外语')]")
+                ele.click()
+                time.sleep(1)
+                for cls in zywy:
+                    if tryPick(cls, driver):
+                        zywy.remove(cls)
+
 
         # 专业课选课
         ele = driver.find_element_by_link_text("学科专业课")
