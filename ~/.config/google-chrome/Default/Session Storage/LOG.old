@@ -1,7 +1,8 @@
-2021/09/03-13:57:03.910 3 Reusing MANIFEST /home/liu/ws/FDU-Xuanke/~/.config/google-chrome/Default/Session Storage/MANIFEST-000001
-2021/09/03-13:57:03.911 3 Recovering log #4
-2021/09/03-13:57:03.911 3 Level-0 table #6: started
-2021/09/03-13:57:03.914 3 Level-0 table #6: 77172 bytes OK
-2021/09/03-13:57:03.914 3 Recovering log #5
-2021/09/03-13:57:03.914 3 Reusing old log /home/liu/ws/FDU-Xuanke/~/.config/google-chrome/Default/Session Storage/000005.log 
-2021/09/03-13:57:03.915 3 Delete type=0 #4
+2021/09/03-14:05:10.271 3 Reusing MANIFEST /home/liu/ws/FDU-Xuanke/~/.config/google-chrome/Default/Session Storage/MANIFEST-000001
+2021/09/03-14:05:10.271 3 Recovering log #5
+2021/09/03-14:05:10.272 3 Level-0 table #8: started
+2021/09/03-14:05:10.274 3 Level-0 table #8: 78434 bytes OK
+2021/09/03-14:05:10.275 3 Recovering log #8
+2021/09/03-14:05:10.275 3 Reusing old log /home/liu/ws/FDU-Xuanke/~/.config/google-chrome/Default/Session Storage/000008.log 
+2021/09/03-14:05:10.276 3 Delete type=2 #9
+2021/09/03-14:05:10.276 3 Delete type=0 #5

@@ -39,7 +39,12 @@ def tryPick(className, driver):
 
 
 # Start chrome
-subprocess.run("google-chrome-stable --remote-debugging-port=9222 --user-data-dir=~/.config/google-chrome/ --disk-cache-dir=~/.cache/google-chrome/Default &", shell=True)
+subprocess.Popen(["google-chrome-stable",
+                  "--remote-debugging-port=9222",
+                  "--user-data-dir=.config/google-chrome/",
+                  "--disk-cache-dir=.cache/google-chrome/Default"],
+                 stdout=subprocess.DEVNULL,
+                 stderr=subprocess.DEVNULL)
 
 # Connect to chrome
 chrome_options = Options()
@@ -66,15 +71,14 @@ print(driver.title)
 #     # ele.click()
 #     ele = driver.find_element_by_link_text("微电子材料")
 ii = 0
-zzllk = []
-dywgy = []
-zywy = []
+政治理论课 = []
+第一外国语 = []
+专业外语 = ["专业外语2021202201MAST612156.01"]
 
-xwjck = []
-xwzyk = ["系统级可编程芯片设计2021202201INFO630047.01"]
-# zyxxk=["射频微波通信电路设计基础","微电子系统封装","半导体测试技术"]
-zyxxk = ["多物理场建模2021202201SME637001.01", "计算微电子学2020202102INFO830033.01"]
-# zyxxk = ["计算微电子学2020202102INFO830033.01"]
+学位基础课 = []
+学位专业课 = ["系统级可编程芯片设计2021202201INFO630047.01"]
+专业选修课 = ["多物理场建模2021202201SME637001.01", "计算微电子学2020202102INFO830033.01"]
+# 专业选修课 = ["计算微电子学2020202102INFO830033.01"]
 while True:
     if ii % 20 == 0:
         driver.refresh()
@@ -83,52 +87,52 @@ while True:
         time.sleep(3)
     try:
         # 学位公共课
-        if zzllk != [] or dywgy != [] or zywy != []:
+        if 政治理论课 != [] or 第一外国语 != [] or 专业外语 != []:
             ele = driver.find_element_by_link_text("学位公共课")
             ele.click()
             time.sleep(1)
-            for cls in zzllk:
+            for cls in 政治理论课:
                 if tryPick(cls, driver):
-                    zzllk.remove(cls)
+                    政治理论课.remove(cls)
 
-            if dywgy != []:
+            if 第一外国语 != []:
                 ele = driver.find_element_by_xpath("//li[contains(.,'第一外国语')]")
                 ele.click()
                 time.sleep(1)
-                for cls in dywgy:
+                for cls in 第一外国语:
                     if tryPick(cls, driver):
-                        dywgy.remove(cls)
+                        第一外国语.remove(cls)
 
-            if zywy != []:
+            if 专业外语 != []:
                 ele = driver.find_element_by_xpath("//li[contains(.,'专业外语')]")
                 ele.click()
                 time.sleep(1)
-                for cls in zywy:
+                for cls in 专业外语:
                     if tryPick(cls, driver):
-                        zywy.remove(cls)
+                        专业外语.remove(cls)
 
 
         # 专业课选课
         ele = driver.find_element_by_link_text("学科专业课")
         ele.click()
         time.sleep(1)
-        for cls in xwjck:
+        for cls in 学位基础课:
             if tryPick(cls, driver):
-                xwjck.remove(cls)
+                学位基础课.remove(cls)
 
         ele = driver.find_element_by_xpath("//li[contains(.,'学位专业课')]")
         ele.click()
         time.sleep(1)
-        for cls in xwzyk:
+        for cls in 学位专业课:
             if tryPick(cls, driver):
-                xwzyk.remove(cls)
+                学位专业课.remove(cls)
 
         ele = driver.find_element_by_xpath("//li[contains(.,'专业选修课')]")
         ele.click()
         time.sleep(1)
-        for cls in zyxxk:
+        for cls in 专业选修课:
             if tryPick(cls, driver):
-                zyxxk.remove(cls)
+                专业选修课.remove(cls)
     except selenium.common.exceptions.NoSuchElementException as e:
         print(e)
         ii = 0
