@@ -55,7 +55,7 @@ chrome_driver = "chrome_driver"
 driver = webdriver.Chrome(options=chrome_options)
 
 driver.get("http://yjsxk.fudan.edu.cn/wsxk/")
-while input("If you finished entering you accouter, please press enter!"):
+while input("If you finished entering you account, please press enter!"):
     pass
 
 print(driver.title)
@@ -73,11 +73,11 @@ print(driver.title)
 ii = 0
 政治理论课 = []
 第一外国语 = []
-专业外语 = ["专业外语2021202201MAST612156.01"]
+专业外语 = []
 
 学位基础课 = []
 学位专业课 = ["系统级可编程芯片设计2021202201INFO630047.01"]
-专业选修课 = ["多物理场建模2021202201SME637001.01", "计算微电子学2020202102INFO830033.01"]
+专业选修课 = []
 # 专业选修课 = ["计算微电子学2020202102INFO830033.01"]
 while True:
     if ii % 20 == 0:

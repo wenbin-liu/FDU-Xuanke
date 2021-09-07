@@ -1,3 +1,2 @@
-2021/09/03-14:26:13.614 3 Reusing MANIFEST /home/liu/ws/FDU-Xuanke/.config/google-chrome/Default/Local Storage/leveldb/MANIFEST-000001
-2021/09/03-14:26:13.614 3 Recovering log #3
-2021/09/03-14:26:13.614 3 Reusing old log /home/liu/ws/FDU-Xuanke/.config/google-chrome/Default/Local Storage/leveldb/000003.log 
+2021/09/07-12:49:10.661 3 Creating DB /home/liu/ws/FDU-Xuanke/.config/google-chrome/Default/Local Storage/leveldb since it was missing.
+2021/09/07-12:49:10.666 3 Reusing MANIFEST /home/liu/ws/FDU-Xuanke/.config/google-chrome/Default/Local Storage/leveldb/MANIFEST-000001
